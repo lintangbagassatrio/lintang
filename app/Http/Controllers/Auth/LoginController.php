@@ -6,6 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+
+
+
 class LoginController extends Controller
 {
     /*
@@ -41,20 +47,20 @@ class LoginController extends Controller
         $input = $request->all();
 
         $this->validate($request, [
-            'email' => 'request\email',
-            'password' => 'request',
-        ])
-        if(auth()->attemp(array('email' =$input['email'],'password' => $input['password'])))
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if(auth()->attempt(array('email' =>$input['email'],'password' => $input['password'])))
         {
-            if (auth()->user()->roles_id ==){
-                retur redirect()->route('admin.home');
+            if (auth()->user()->roles_id == 1){
+                return redirect()->route('admin.home');
             }
         else{
             return redirect()->route('home');
         }
         }else{
-            return redirect()->route('login')
-            ->with('email','Email-Address And Password Are Wrong.');
+            return redirect()->route('login')->with('email','Email-Address And Password Are Wrong.');
         }
     }
 }

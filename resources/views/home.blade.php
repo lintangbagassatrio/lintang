@@ -11,7 +11,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                   @if(@user->roles_id == 1)
+                   @if($user->roles_id == 1)
                    andaa login sebagai admin 
                    @else
                    anda login sebagai user

@@ -30,4 +30,4 @@ Route::get('/home', function() {
 route::get('/test', function(){
     return "hello";
 });
- Route::get('admin/home', [\App\Http\Controllers\AdminControllers::class,'index'])->name('admin.home')->middleware('is_admin');
+ Route::get('admin/home', [\App\Http\Controllers\AdminController::class,'index'])->name('admin.home')->middleware('is_admin');
