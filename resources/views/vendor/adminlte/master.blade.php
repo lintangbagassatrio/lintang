@@ -107,6 +107,60 @@
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
 
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+        })
+        @if(Session::has('massage'))
+            var type = "{{Session::get('alert-type')}}";
+            switch (type){
+                case 'info':
+                    Toast.fire({
+                        type: 'info',
+                        title: "{{ Session::get('message') }}"
+                    })
+                    break;
+                    case 'success':
+                    Toast.fire({
+                        type: 'success',
+                        title: "{{ Session::get('message') }}"
+                    })
+                    break;
+                    case 'error':
+                    Toast.fire({
+                        type: 'error',
+                        title: "{{ Session::get('message') }}"
+                    })
+                    break;
+                    case 'info':
+                    Toast.fire({
+                        type: 'info',
+                        title: "Ooops",
+                        text: "{{ Session::get('message') }}"
+                        timer: 3000
+                    })
+                    break;
+            }
+            @endif
+
+            @if ($errors->any())
+                @foreach($errors->all() as $errors)
+                    Swal.fire({
+                        type: 'error',
+                        title: "Ooops",
+                        text: "{{ $error }}",
+                    })
+                    @endforeach
+                @endif
+                
+                $('#table-data').DataTable();
+
+                let baseurl = "<?=url("/")?>";
+                let fullURL = "<?=url()->full()?>";
+    </script>
 </body>
 
 </html>

@@ -290,6 +290,12 @@ return [
     */
 
     'menu' => [
+        [
+            'text' => 'Buku',
+            'url'  => 'admin/books',
+            'icon' => 'fas fa-fw fa-book',
+            'can'  => 'isAdmin',
+        ],
         // Navbar items:
         [
             'type'         => 'navbar-search',
@@ -319,11 +325,6 @@ return [
             'label_color' => 'success',
         ],
         ['header' => 'account_settings'],
-        [
-            'text' => 'Buku',
-            'url'  => 'admin/book',
-            'icon' => 'fas fa-fw fa-book',
-        ],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
