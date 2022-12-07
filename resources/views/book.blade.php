@@ -165,7 +165,7 @@
     <script> 
         $(function(){ 
             $(document).on('click','#btn-edit-buku', function(){ 
-
+ 
                 let id = $(this).data('id'); 
 
                 $('#image-area').empty(); 
@@ -190,24 +190,19 @@
                     },
                 });
             });
-        });
-    </script>
-@stop
-
-@section('js') 
-    <script> 
+        }); 
         function deleteConfirmation(id, judul) { 
             swal.fire({ 
                 title: "Hapus?", 
                 type: 'warning', 
-                text: "Apakah ands yakin akan menghapus data buku dengan judul" + judul+"?!", 
+                text: "Apakah anda yakin akan menghapus data buku dengan judul" + judul+"?!", 
                 showCancelButton: !0,
                 confirmButtonText: "Ya, lakukan!", 
                 cancelButtonText: "Tidak, batalkan!", 
-                reverseButtons: !O 
+                reverseButtons: !0
             }).then (function (e) { 
                 if (e.value === true) {
-                    var CSRF_TOKEN = $('meta [name="csrf-token"]').attr('content'); 
+                    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content'); 
 
                     $.ajax({ 
                         type: 'POST', 
@@ -233,4 +228,5 @@
             })
         }
     </script>
+    
 @stop

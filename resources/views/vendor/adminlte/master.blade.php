@@ -73,7 +73,7 @@
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
     @endif
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.6.15/sweetalert2.min.js" integrity="sha512-Z4QYNSc2DFv8LrhMEyarEP3rBkODBZT90RwUC7dYQYF29V4dfkh+8oYZHt0R6T3/KNv32/u0W6icGWUUk9V0jA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>
@@ -147,7 +147,7 @@
             @endif
 
             @if ($errors->any())
-                @foreach($errors->all() as $errors)
+                @foreach($errors->all() as $error)
                     Swal.fire({
                         type: 'error',
                         title: "Ooops",
@@ -155,12 +155,21 @@
                     })
                     @endforeach
                 @endif
+
+                @if($errors->any())
+                    swal.fire({
+                        icon: 'error',
+                        title: "Ooops",
+                        text: "Terjadi suatu kesalahan",
+                    })
+                    @endif
                 
                 $('#table-data').DataTable();
 
                 let baseurl = "<?=url("/")?>";
                 let fullURL = "<?=url()->full()?>";
     </script>
+   
 </body>
 
 </html>
