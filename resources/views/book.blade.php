@@ -58,7 +58,15 @@
             <button class="btn btn-primary" data-toggle="modal" data-target="#tambahBukuModal">
                 <i class="fa fa-plus">   Tambah Data</i>
             </button>
-            <hr>
+            <a href="{{ route('admin.print.books') }}" target="blank" class="btn btn-secondary">
+                <i class="fa fa-print"></i>
+                Cetak PDF
+            </a>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <a href="{{ route('admin.book.export') }}" class="btn btn-info" target="-blank">Export</a>
+                <a href="" class="btn btn-warning">Import</a>
+</div>
+</hr>
             <table id="table-data" class="table table-bordered">
                 <thead>
                     <div class="modal fade" id="tambahBukuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -191,6 +199,7 @@
                 });
             });
         }); 
+        
         function deleteConfirmation(id, judul) { 
             swal.fire({ 
                 title: "Hapus?", 
