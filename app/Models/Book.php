@@ -7,6 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
+    use HasFactory;
+
+    protected $fillable =[
+        'judul',
+        'penulis',
+        'tahun',
+        'penerbit'
+
+    ];
+    
     public static function getDataBooks()
     {
         $books = Book::all();
@@ -21,6 +31,6 @@ class Book extends Model
             $books_filter[$i]['tahun'] =$books[$i]->tahun;
             $books_filter[$i]['penerbit'] =$books[$i]->penerbit;
         }
-        return $books_filter;
+        return $books_filter; 
     }
 }

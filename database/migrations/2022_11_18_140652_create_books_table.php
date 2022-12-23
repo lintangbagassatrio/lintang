@@ -19,7 +19,7 @@ class CreateBooksTable extends Migration
             $table->string('penulis');
             $table->year('tahun');
             $table->string('penerbit');
-            $table->string('cover')->nullable;
+            $table->string('cover')->nullable();
             $table->timestamps();
         });
     }
